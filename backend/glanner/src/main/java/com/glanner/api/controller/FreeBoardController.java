@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@Transactional
 @RestController
-@RequestMapping("/api/free-board")
+@RequestMapping("/api/freeBoard")
 public class FreeBoardController extends BoardController<SaveFreeBoardReqDto> {
     private final FreeBoardQueryRepository freeBoardQueryRepository;
 
