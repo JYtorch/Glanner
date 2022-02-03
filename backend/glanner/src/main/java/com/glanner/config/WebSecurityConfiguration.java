@@ -75,12 +75,11 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
          .and()
          .authorizeRequests()
-         .antMatchers("/api/auth", "/api/mail/**").permitAll()
+         .antMatchers("/api/auth").permitAll()
 
          .antMatchers("/api/**").hasAuthority(UserRoleStatus.ROLE_USER.name())
 //         .antMatchers("/api/**").permitAll()
          .antMatchers("/api/notice/**").hasAuthority(UserRoleStatus.ROLE_ADMIN.name())
-
 
          .anyRequest().authenticated()
 
