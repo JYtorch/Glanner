@@ -18,6 +18,7 @@ import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
+@Transactional
 public class BoardController<Q extends SaveBoardReqDto> {
     private final BoardService boardService;
 
