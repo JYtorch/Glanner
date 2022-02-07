@@ -16,10 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
-
 import java.time.LocalDateTime;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
@@ -43,7 +42,7 @@ class UserServiceImplTest {
     public void testJoin() throws Exception{
         //given
         SaveUserReqDto reqDto = SaveUserReqDto.builder()
-                .email("cherish8513@naver.com")
+                .email("cherish8515@naver.com")
                 .name("싸피")
                 .password("1234")
                 .phoneNumber("010-1234-5678")
@@ -69,7 +68,7 @@ class UserServiceImplTest {
     public void testAddWork() throws Exception{
         //given
         LocalDateTime now = LocalDateTime.now();
-        AddPlannerWorkReqDto reqDto = new AddPlannerWorkReqDto("title", "content", now, now.plusDays(3));
+        AddPlannerWorkReqDto reqDto = new AddPlannerWorkReqDto("title", "content", now, now.plusDays(3), null);
 
         //when
         User findUser = userRepository.findByEmail("cherish8513@naver.com").orElseThrow(UserNotFoundException::new);
