@@ -35,6 +35,10 @@ public class QDailyWorkSchedule extends EntityPathBase<DailyWorkSchedule> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
+    public final DateTimePath<java.time.LocalDateTime> notiDate = createDateTime("notiDate", java.time.LocalDateTime.class);
+
+    public final EnumPath<NotificationStatus> notiStatus = createEnum("notiStatus", NotificationStatus.class);
+
     public final QSchedule schedule;
 
     public final DateTimePath<java.time.LocalDateTime> startDate = createDateTime("startDate", java.time.LocalDateTime.class);

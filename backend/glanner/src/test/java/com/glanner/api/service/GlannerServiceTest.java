@@ -19,6 +19,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -53,6 +54,7 @@ public class GlannerServiceTest {
     }
 
     @Test
+    @Commit
     public void testCreateGlanner() throws Exception{
         //given
        User findUser = getUser(userRepository.findByEmail("cherish8513@naver.com"));
