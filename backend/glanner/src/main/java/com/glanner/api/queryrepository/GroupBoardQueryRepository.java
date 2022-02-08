@@ -10,4 +10,5 @@ public interface GroupBoardQueryRepository {
     public Optional<FindGroupBoardResDto> findById(Long id);
     public List<FindGroupBoardResDto> findPage(int offset, int limit);
     public List<FindGroupBoardResDto> findByKeyWord(int offset, int limit, SearchBoardReqDto reqDto);
+    public List<FindGroupBoardResDto> findByInterest(int offset, int limit, SearchBoardReqDto reqDto);
 }

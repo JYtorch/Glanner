@@ -64,4 +64,20 @@ public class GroupBoardQueryRepositoryImpl implements GroupBoardQueryRepository{
                 .limit(limit)
                 .fetch();
     }
+
+    @Override
+    public List<FindGroupBoardResDto> findByInterest(int offset, int limit, SearchBoardReqDto reqDto) {
+        return query
+                .select(Projections.constructor(FindGroupBoardResDto.class,
+                        groupBoard.title,
+                        groupBoard.content,
+                        groupBoard.count,
+                        groupBoard.interests))
+                .from(groupBoard)
+                .where(groupBoard.interests.contains(reqDto.getKeyWord()))
+                .orderBy(groupBoard.createdDate.desc())
+                .offset(offset)
+                .limit(limit)
+                .fetch();
+    }
 }
