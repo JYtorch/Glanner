@@ -63,7 +63,7 @@ class UserControllerTest {
 
 
         //when
-        mockMvc.perform(post("/user")
+        mockMvc.perform(post("/api/user")
                 .content(asJsonString(reqDto))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
@@ -85,7 +85,7 @@ class UserControllerTest {
 
         //when
         when(userService.getWorks("cherish8513@naver.com", dateTimeStart, dateTimeEnd)).thenReturn(response);
-        mockMvc.perform(get("/user/planner/{date}", date))
+        mockMvc.perform(get("/api/user/planner/{date}", date))
 
         //then
                 .andDo(print())
@@ -101,7 +101,7 @@ class UserControllerTest {
 
         //when
         when(userQueryRepository.findDailyWork(workId)).thenReturn(Optional.of(success));
-        mockMvc.perform(get("/user/planner/work/{id}", workId))
+        mockMvc.perform(get("/api/user/planner/work/{id}", workId))
 
                 //then
                 .andDo(print())
@@ -117,7 +117,7 @@ class UserControllerTest {
         AddPlannerWorkReqDto reqDto = new AddPlannerWorkReqDto("title", "content", now, now.plusDays(3), null);
 
         //when
-        mockMvc.perform(post("/user/planner/work")
+        mockMvc.perform(post("/api/user/planner/work")
                 .content(asJsonString(reqDto))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))

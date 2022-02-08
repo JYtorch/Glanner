@@ -23,6 +23,12 @@ public class FreeBoardController extends BoardController<SaveFreeBoardReqDto> {
         this.freeBoardQueryRepository = freeBoardQueryRepository;
     }
 
+    /**
+     *
+     * @param page : 0이 아닌 1부터 시작하며 데이터를 가져오는 시작 인덱스를 지정한다.
+     * @param limit : 가져올 데이터의 갯수를 지정한다.
+     * @return : 데이터의 정보를 Dto List 로 반환한다.
+     */
     @GetMapping("/{page}/{limit}")
     public ResponseEntity<List<FindFreeBoardResDto>> getBoards(@PathVariable int page, @PathVariable int limit){
         List<FindFreeBoardResDto> responseDto =freeBoardQueryRepository.findPage(page, limit);
