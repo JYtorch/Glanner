@@ -4,6 +4,7 @@ import com.glanner.api.dto.request.SaveFreeBoardReqDto;
 import com.glanner.api.dto.response.FindFreeBoardResDto;
 import com.glanner.api.queryrepository.FreeBoardQueryRepository;
 import com.glanner.api.service.BoardService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

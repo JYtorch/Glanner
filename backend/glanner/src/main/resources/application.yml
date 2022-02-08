@@ -7,11 +7,10 @@ spring:
     password: root
     driver-class-name: org.mariadb.jdbc.Driver
 
-
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -29,6 +28,7 @@ spring:
           auth: true
           starttls:
             enable: true
+
 
 logging.level:
   org.hibernate.SQL: debug
