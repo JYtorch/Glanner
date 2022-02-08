@@ -3,6 +3,7 @@ package com.glanner.api.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.glanner.api.dto.request.SaveGlannerBoardReqDto;
+import com.glanner.api.dto.request.SearchBoardReqDto;
 import com.glanner.api.dto.response.FindGlannerBoardResDto;
 import com.glanner.api.queryrepository.GlannerBoardQueryRepository;
 import com.glanner.api.service.BoardService;
@@ -118,6 +119,26 @@ public class GlannerBoardControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
         verify(queryRepository, times(1)).findById(glannerBoardId);
+    }
+
+    @Test
+    public void testSearchBoardsPage() throws Exception{
+        //given
+        Long glannerId = 1L;
+        int page = 0;
+        int limit = 25;
+        SearchBoardReqDto reqDto = new SearchBoardReqDto("1");
+
+        //when
+        mockMvc.perform(get("/api/glanner-board/{id}/search/{page}/{limit}", glannerId, page, limit)
+                        .content(asJsonString(reqDto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+
+                //then
+                .andExpect(status().isOk());
+        verify(queryRepository, times(1))
+                .findByKeyWord(eq(glannerId), eq(page), eq(limit), any(SearchBoardReqDto.class));
     }
 
     public static String asJsonString(final Object obj) {

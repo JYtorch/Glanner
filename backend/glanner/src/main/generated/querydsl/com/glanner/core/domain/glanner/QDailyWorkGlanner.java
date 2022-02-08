@@ -38,6 +38,10 @@ public class QDailyWorkGlanner extends EntityPathBase<DailyWorkGlanner> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
+    public final DateTimePath<java.time.LocalDateTime> notiDate = createDateTime("notiDate", java.time.LocalDateTime.class);
+
+    public final EnumPath<com.glanner.core.domain.user.NotificationStatus> notiStatus = createEnum("notiStatus", com.glanner.core.domain.user.NotificationStatus.class);
+
     public final DateTimePath<java.time.LocalDateTime> startDate = createDateTime("startDate", java.time.LocalDateTime.class);
 
     public final StringPath title = createString("title");

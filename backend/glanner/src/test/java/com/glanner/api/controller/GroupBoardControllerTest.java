@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.glanner.api.dto.request.AddCommentReqDto;
 import com.glanner.api.dto.request.SaveGroupBoardReqDto;
+import com.glanner.api.dto.request.SearchBoardReqDto;
 import com.glanner.api.dto.response.FindGroupBoardResDto;
 import com.glanner.api.queryrepository.GroupBoardQueryRepository;
 import com.glanner.api.service.BoardService;
@@ -139,6 +140,24 @@ public class GroupBoardControllerTest {
         verify(queryRepository, times(1)).findPage(page, limit);
     }
 
+    @Test
+    public void testSearchBoardsPage() throws Exception{
+        //given
+        int page = 0;
+        int limit = 25;
+        SearchBoardReqDto reqDto = new SearchBoardReqDto("1");
+
+        //when
+        mockMvc.perform(get("/api/group-board/search/{page}/{limit}", page, limit)
+                        .content(asJsonString(reqDto))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                //then
+                .andDo(print())
+                .andExpect(status().isOk());
+        verify(queryRepository, times(1))
+                .findByKeyWord(eq(page), eq(limit), any(SearchBoardReqDto.class));
+    }
 
 
     public static String asJsonString(final Object obj) {
