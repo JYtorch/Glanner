@@ -1,6 +1,7 @@
 package com.glanner.config;
 
 
+import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,7 +32,10 @@ public class SwaggerConfiguration {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.glanner.api.controller"))
+                .apis(Predicates.or(
+                        RequestHandlerSelectors.basePackage("com.glanner.api.controller"),
+                        RequestHandlerSelectors.basePackage("com.glanner.security.controller")
+                ))
                 .paths(PathSelectors.ant("/api/**"))
                 .build();
     }
