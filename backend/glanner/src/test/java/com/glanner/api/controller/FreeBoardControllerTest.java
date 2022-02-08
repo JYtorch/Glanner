@@ -7,6 +7,9 @@ import com.glanner.api.dto.request.SearchBoardReqDto;
 import com.glanner.api.dto.response.FindFreeBoardResDto;
 import com.glanner.api.queryrepository.FreeBoardQueryRepository;
 import com.glanner.api.service.BoardService;
+import com.glanner.core.domain.user.Schedule;
+import com.glanner.core.domain.user.User;
+import com.glanner.core.domain.user.UserRoleStatus;
 import com.glanner.core.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,8 +18,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithUserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.transaction.BeforeTransaction;
 import org.springframework.test.web.servlet.MockMvc;
 
 import javax.persistence.EntityManager;
@@ -29,21 +34,18 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-/**
- * DB에 cherish8514@naver.com 유저가 있는 상황에서
- * FreeBoard 컨트롤러 접근 테스트
- */
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
 @SpringBootTest
-@WithUserDetails("cherish8514@naver.com")
+@WithMockUser(username = "cherish8514@naver.com", password = "1234")
 public class FreeBoardControllerTest {
 
     @Autowired
     UserRepository userRepository;
-
     @Autowired
     EntityManager em;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Autowired
     private MockMvc mockMvc;
@@ -53,6 +55,22 @@ public class FreeBoardControllerTest {
     private FreeBoardQueryRepository freeBoardQueryRepository;
 
     private final String userEmail = "cherish8514@naver.com";
+
+    @BeforeTransaction
+    public void init() {
+        User user = User.builder()
+                .phoneNumber("010-6575-2938")
+                .email("cherish8514@naver.com")
+                .name("JeongJooHeon")
+                .password(passwordEncoder.encode("1234"))
+                .role(UserRoleStatus.ROLE_USER)
+                .build();
+
+        Schedule schedule = Schedule.builder()
+                .build();
+        user.changeSchedule(schedule);
+        userRepository.save(user);
+    }
 
     @Test
     public void testSaveFreeBoard() throws Exception{
