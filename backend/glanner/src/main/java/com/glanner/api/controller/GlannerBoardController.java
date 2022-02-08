@@ -1,6 +1,7 @@
 package com.glanner.api.controller;
 
 import com.glanner.api.dto.request.SaveGlannerBoardReqDto;
+import com.glanner.api.dto.request.SearchBoardReqDto;
 import com.glanner.api.dto.response.BaseResponseEntity;
 import com.glanner.api.dto.response.FindGlannerBoardResDto;
 import com.glanner.api.queryrepository.GlannerBoardQueryRepository;
@@ -44,6 +45,12 @@ public class GlannerBoardController extends BoardController<SaveGlannerBoardReqD
     @GetMapping("/{id}")
     public ResponseEntity<FindGlannerBoardResDto> getBoard(@PathVariable Long id){
         FindGlannerBoardResDto responseDto = queryRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        return ResponseEntity.status(200).body(responseDto);
+    }
+
+    @GetMapping("{glannerId}/search/{page}/{limit}")
+    public ResponseEntity<List<FindGlannerBoardResDto>> getBoards(@PathVariable Long glannerId, @PathVariable int page, @PathVariable int limit, @RequestBody @Valid SearchBoardReqDto reqDto){
+        List<FindGlannerBoardResDto> responseDto = queryRepository.findByKeyWord(glannerId, page, limit, reqDto);
         return ResponseEntity.status(200).body(responseDto);
     }
 }
