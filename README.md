@@ -36,8 +36,10 @@
 <img src="https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/>
 <img src="https://img.shields.io/badge/-Ngnix-181717?style=flat-square"/>
 <img src="https://img.shields.io/badge/-Jenkins-181717?style=flat-square"/>
+<img src="https://img.shields.io/badge/-Jira-007396?style=flat-square"/>
 
 #### Development methodology
 <img src="https://img.shields.io/badge/-Doamin%20Driven%20Desigin-007396?style=flat-square"/>
 <img src="https://img.shields.io/badge/-SOLID-007396?style=flat-square"/>
 <img src="https://img.shields.io/badge/-Test%20Driven%20Design-007396?style=flat-square"/>
+<img src="https://img.shields.io/badge/-Agile-007396?style=flat-square"/>
