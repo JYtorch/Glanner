@@ -11,6 +11,7 @@ import BoardDetail from "../Routes/Community/BoardDetail";
 import BoardList from "../Routes/Community/BoardList";
 import BoardForm from "../Routes/Community/BoardForm";
 import DailyPlanner from '../Routes/Planner/DailyPlanner/DailyPlanerContainer';
+import GroupPlanner from '../Routes/Planner/GroupPlanner/GroupPlannerContainer';
 
 const HeaderDiv = styled.div`
   border-bottom: 2px solid #e5e5e5;
@@ -35,13 +36,13 @@ export default () => (
       />
       <Routes>
         <Route path="*" element={<MainPage />}/>
-        <Route path="/" element={<MainPage />}
-        />
+        <Route path="/" element={<MainPage />} />
         <Route path="/community/:type" element={<BoardList />} />
         <Route path="/home" />
         <Route path="/board-form"  element={<BoardForm />} />
         <Route path="/board/:id" element={<BoardDetail />} />
         <Route path="/daily" element={<DailyPlanner />} />
+        <Route path="/group/:id" element={<GroupPlanner />} />
 
       </Routes>
     </Router>
