@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Drawer from "@mui/material/Drawer";
@@ -176,6 +177,19 @@ const settingItem = {
   fontSize: "16px",
 };
 
+const onClickPlanner = (e) => {
+  categories.map(({ id, children }) => {
+    children.map(({ id: childId, active }) => {
+      if (e.currentTarget.id == childId) {
+        active = true;
+        // console.log(childId, e.currentTarget.id, active);
+      } else {
+        active = false;
+      }
+    });
+  });
+};
+
 function Navigator(props) {
   const { ...other } = props;
 
@@ -193,7 +207,7 @@ function Navigator(props) {
             fontFamily: "Rozha One",
           }}
         >
-          <Link to = {``}>
+          <Link to={``}>
             <img src={logo} style={{ height: 40 + "px" }} />
           </Link>
         </ListItem>
@@ -218,46 +232,45 @@ function Navigator(props) {
               {children.map(({ id: childId, active }) => (
                 <ListItem key={childId} sx={{ pb: 0 }}>
                   <GroupPlannerList>
-                    <ListItemButton
-                      selected={active}
-                      sx={item}
-                      onClick={() => {
-                        console.log(
-                          categories[id == "내 플래너" ? 0 : 1].children
-                        );
-                      }}
-                    >
-                      <ListItemText>
-                        {id === "그룹 플래너" ? (
-                          <FontAwesomeIcon
-                            icon={faCircle}
-                            className="circle"
-                            style={{ width: 12 + "px", color: "#ABC3FF" }}
-                          />
-                        ) : (
-                          <FontAwesomeIcon
-                            icon={faCircle}
-                            className="circle"
-                            style={{ width: 12 + "px", color: "#FFABAB" }}
-                          />
-                        )}
-                        {"  "}
-                        {childId}
-                        {active ? (
-                          <FontAwesomeIcon
-                            icon={faAngleRight}
-                            className="arrowRight"
-                            style={{
-                              width: 15 + "px",
-                              color: "#959595",
-                              marginLeft: 10 + "px",
-                            }}
-                          />
-                        ) : (
-                          ""
-                        )}
-                      </ListItemText>
-                    </ListItemButton>
+                    <Link to={`/group/${childId}`}>
+                      <ListItemButton
+                        selected={active}
+                        sx={item}
+                        onClick={onClickPlanner}
+                        id={childId}
+                      >
+                        <ListItemText>
+                          {id === "그룹 플래너" ? (
+                            <FontAwesomeIcon
+                              icon={faCircle}
+                              className="circle"
+                              style={{ width: 12 + "px", color: "#ABC3FF" }}
+                            />
+                          ) : (
+                            <FontAwesomeIcon
+                              icon={faCircle}
+                              className="circle"
+                              style={{ width: 12 + "px", color: "#FFABAB" }}
+                            />
+                          )}
+                          {"  "}
+                          {childId}
+                          {active ? (
+                            <FontAwesomeIcon
+                              icon={faAngleRight}
+                              className="arrowRight"
+                              style={{
+                                width: 15 + "px",
+                                color: "#959595",
+                                marginLeft: 10 + "px",
+                              }}
+                            />
+                          ) : (
+                            ""
+                          )}
+                        </ListItemText>
+                      </ListItemButton>
+                    </Link>
                   </GroupPlannerList>
                 </ListItem>
               ))}
