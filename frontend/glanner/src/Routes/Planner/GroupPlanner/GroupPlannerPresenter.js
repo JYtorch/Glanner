@@ -305,7 +305,7 @@ export default function GroupPlannerPresenter() {
   }
 
   return (
-    <CalendarDiv class="calendar-div">
+    <CalendarDiv className="calendar-div">
       <FullCalendar
         plugins={[dayGridPlugin, timeGridPlugin, momentPlugin]}
         initialView="dayGridWeek"
@@ -314,9 +314,9 @@ export default function GroupPlannerPresenter() {
         eventDisplay="block"
         titleFormat={function (date) {
           //console.log(date)
-          return `${monthName[date.date.month]} Week ${
+          return `${date.date.year} ${monthName[date.date.month]} Week ${
             Math.floor(date.date.day / 7) + 1
-          }, ${date.date.year}`;
+          }`;
         }}
         headerToolbar={{
           start: "title gotoDate",
@@ -436,7 +436,7 @@ export default function GroupPlannerPresenter() {
                 <Paper
                   elevation={0}
                   sx={{
-                    width: "400px",
+                    width: "370px",
                     height: "180px",
                     my: "10px",
                     mx: "7px",
@@ -483,7 +483,7 @@ export default function GroupPlannerPresenter() {
               <Paper
                 elevation={0}
                 sx={{
-                  width: "400px",
+                  width: "370px",
                   height: "180px",
                   my: "10px",
                   mx: "7px",
@@ -525,7 +525,7 @@ export default function GroupPlannerPresenter() {
                   <Paper
                     elevation={0}
                     sx={{
-                      width: "400px",
+                      width: "370px",
                       height: "180px",
                       my: "10px",
                       mx: "7px",
@@ -591,7 +591,7 @@ export default function GroupPlannerPresenter() {
                 <Paper
                   elevation={0}
                   sx={{
-                    width: "400px",
+                    width: "370px",
                     height: "180px",
                     my: "10px",
                     mx: "7px",

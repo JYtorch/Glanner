@@ -13,7 +13,7 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
-import DatePicker from "react-date-picker";
+// import DatePicker from "react-date-picker";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "@fortawesome/fontawesome-free/css/all.css";
@@ -170,7 +170,7 @@ function renderEventContent(events) {
 function DatePickerDiv(date, setDate, pickerOpen, handleClose) {
   return (
     <Modal open={pickerOpen} onClose={handleClose}>
-      <DatePicker onChange={setDate} value={date} />
+      {/* <DatePicker onChange={setDate} value={date} /> */}
     </Modal>
   );
 }
@@ -236,7 +236,6 @@ export default function Calendar(props) {
               />
             ),
             click: () => {
-              setDate(new Date(2021, 1, 1));
               if (pickerOpen) {
                 handleClose();
               } else {
@@ -279,12 +278,9 @@ export default function Calendar(props) {
           //console.log(date)
           return (
             <div>
-              <Typography style={{fontSize: "20px", fontFamily: "Noto Sans KR"}}>
-                {monthName[date.date.month]} {date.date.year}
+              <Typography style={{ fontSize: "20px", fontFamily: "Noto Sans KR" }}>
+                {date.date.year} {monthName[date.date.month]} {new Date().getDate()}
               </Typography>
-              <DatePickerDiv
-                open={pickerOpen}
-              />
             </div>
           );
         }}

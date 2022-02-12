@@ -3,16 +3,13 @@ import React from "react";
 import Helmet from "react-helmet";
 
 import GroupPlannerPresenter from "./GroupPlannerPresenter";
-import { findGlannerList } from "../../../Api/api";
+import axios from "axios";
 
 export default function GroupPlannerContainer() {
   const [eventList, setEventList] = React.useState(null);
+  const [usedId, setUserId] = React.useState("test2@naver.com");
 
-  const fetchEvent = async () => {
-    
-  }
-
-  console.log(eventList);
+  // console.log(eventList);
   return (
     <>
       <Helmet>
