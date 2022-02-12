@@ -3,6 +3,7 @@ package com.glanner.api.controller;
 import com.glanner.api.dto.request.SaveGroupBoardReqDto;
 import com.glanner.api.dto.request.SearchBoardReqDto;
 import com.glanner.api.dto.response.BaseResponseEntity;
+import com.glanner.api.dto.response.FindGlannerResDto;
 import com.glanner.api.dto.response.FindGroupBoardResDto;
 import com.glanner.api.dto.response.FindGroupBoardWithCommentResDto;
 import com.glanner.api.exception.UserNotFoundException;
@@ -75,4 +76,12 @@ public class GroupBoardController extends BoardController<SaveGroupBoardReqDto> 
         List<FindGroupBoardResDto> responseDto = queryRepository.findPageWithInterest(page, limit, reqDto.getKeyWord());
         return ResponseEntity.status(200).body(responseDto);
     }
+
+    @GetMapping("/glanner/{boardId}")
+    @ApiOperation(value = "글래너 가져오기", notes = "그룹 게시판과 연결된 글래너를 가져온다.")
+    public ResponseEntity<FindGlannerResDto> searchBoardsWithInterest(@PathVariable Long boardId){
+        FindGlannerResDto responseDto = groupBoardService.getGlannerDetail(boardId);
+        return ResponseEntity.status(200).body(responseDto);
+    }
+
 }
