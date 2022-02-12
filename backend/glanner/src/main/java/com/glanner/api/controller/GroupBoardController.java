@@ -77,10 +77,10 @@ public class GroupBoardController extends BoardController<SaveGroupBoardReqDto> 
         return ResponseEntity.status(200).body(responseDto);
     }
 
-    @GetMapping("/glanner/{id}")
+    @GetMapping("/glanner/{boardId}")
     @ApiOperation(value = "글래너 가져오기", notes = "그룹 게시판과 연결된 글래너를 가져온다.")
-    public ResponseEntity<FindGlannerResDto> searchBoardsWithInterest(@PathVariable Long id){
-        FindGlannerResDto responseDto = groupBoardService.getGlannerDetail(id);
+    public ResponseEntity<FindGlannerResDto> searchBoardsWithInterest(@PathVariable Long boardId){
+        FindGlannerResDto responseDto = groupBoardService.getGlannerDetail(boardId);
         return ResponseEntity.status(200).body(responseDto);
     }
 
