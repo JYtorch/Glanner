@@ -1,7 +1,6 @@
 package com.glanner.core.domain.user;
 
 import com.glanner.core.domain.base.BaseTimeEntity;
-import com.glanner.core.domain.glanner.Glanner;
 import com.querydsl.core.annotations.QueryEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -18,12 +17,13 @@ import java.time.LocalDateTime;
 public class Conference extends BaseTimeEntity {
 
     @Builder
-    public Conference(User owner, Glanner glanner, LocalDateTime callStartTime, LocalDateTime callEndTime, int attendLimit, ConferenceActiveStatus isActive) {
+    public Conference(User owner, LocalDateTime callStartTime, LocalDateTime callEndTime, String thumbnailUrl, String title, String description, ConferenceActiveStatus isActive) {
         this.owner = owner;
-        this.glanner = glanner;
         this.callStartTime = callStartTime;
         this.callEndTime = callEndTime;
-        this.attendLimit = attendLimit;
+        this.thumbnailUrl = thumbnailUrl;
+        this.title = title;
+        this.description = description;
         this.isActive = isActive;
     }
 
@@ -35,22 +35,12 @@ public class Conference extends BaseTimeEntity {
     @JoinColumn(name = "user_id")
     private User owner;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "glanner_id")
-    private Glanner glanner;
-
     private LocalDateTime callStartTime;
     private LocalDateTime callEndTime;
-
-    private int attendLimit;
+    private String thumbnailUrl;
+    private String title;
+    private String description;
 
     @Enumerated(EnumType.STRING)
     private ConferenceActiveStatus isActive;
-
-    public void changeStatus() {
-        this.isActive = ConferenceActiveStatus.CLOSE;
-    }
-    public void changeEndTime(LocalDateTime now) {
-        this.callEndTime = now;
-    }
 }
