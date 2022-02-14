@@ -22,7 +22,6 @@ import com.glanner.core.repository.NotificationRepository;
 import com.glanner.core.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -76,7 +75,7 @@ public class NotificationServiceImpl implements NotificationService {
     @Override
     public void modifyStatus(String userEmail) {
         User findUser = userRepository.findByEmail(userEmail).orElseThrow(UserNotFoundException::new);
-        List<Notification> notifications = notificationRepository.findByConfirmation(NotificationStatus.STILL_NOT_CONFIRMED);
+        List<Notification> notifications = notificationRepository.findByConfirmation(ConfirmStatus.STILL_NOT_CONFIRMED);
         for(Notification notification : notifications){
             notification.changeStatus();
         }
@@ -130,11 +129,11 @@ public class NotificationServiceImpl implements NotificationService {
                         .type(NotificationType.DAILY_WORK_SCHEDULE)
                         .typeId(resDto.getDailyWorkId())
                         .content(makeContent(schedule.getTitle()))
-                        .confirmation(NotificationStatus.STILL_NOT_CONFIRMED)
+                        .confirmation(ConfirmStatus.STILL_NOT_CONFIRMED)
                         .build();
 
                 findUser.addNotification(notification);
-                schedule.changeNotiStatus();
+                schedule.confirm();
             }
             else{
                 User findUser = userRepository.findById(resDto.getUserId()).orElseThrow(UserNotFoundException::new);
@@ -145,11 +144,11 @@ public class NotificationServiceImpl implements NotificationService {
                         .type(NotificationType.DAILY_WORK_GLANNER)
                         .typeId(resDto.getDailyWorkId())
                         .content(makeContent(schedule.getTitle()))
-                        .confirmation(NotificationStatus.STILL_NOT_CONFIRMED)
+                        .confirmation(ConfirmStatus.STILL_NOT_CONFIRMED)
                         .build();
 
                 findUser.addNotification(notification);
-                schedule.changeNotiStatus();
+                schedule.confirm();
             }
         }
     }
