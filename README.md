@@ -121,9 +121,9 @@ Glanner
     │   ├── Common
     │   │   ├── Footer.js
     │   │   ├── App.js
-		│   │   ├── SideNavigationBar.js
-		│   │   ├── Router.js
-		│   │   └── globalStyle.js
+│   │   ├── SideNavigationBar.js
+│   │   ├── Router.js
+│   │   └── globalStyle.js
 		│   ├── Member
 		│   │   ├── SignUp.js
 		│   │   └── SignIn.js
