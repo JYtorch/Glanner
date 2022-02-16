@@ -121,29 +121,29 @@ Glanner
     │   ├── Common
     │   │   ├── Footer.js
     │   │   ├── App.js
-	│   │   ├── SideNavigationBar.js
-	│   │   ├── Router.js
-	│   │   └── globalStyle.js
-	│   ├── Member
-	│   │   ├── SignUp.js
-	│   │   └── SignIn.js
-	├── Routes
+		│   │   ├── SideNavigationBar.js
+		│   │   ├── Router.js
+		│   │   └── globalStyle.js
+		│   ├── Member
+		│   │   ├── SignUp.js
+		│   │   └── SignIn.js
+		├── Routes
     │   ├── Community
     │   │   ├── Community.style.js
     │   │   ├── CommunityContainer.js
     │   │   └── CommunityPresenter.js
     │   ├── Member
     │   │   ├── SignUp
-	│	│   │   ├── SignUp.js
-	│  	│   │   └── SignUp.style.js
+		│		│   │   ├── SignUp.js
+		│  	│   │   └── SignUp.style.js
     │   │   └── SignIn
-	│	│   │   ├── SignIn.js
-	│  	│   │   └── SignIn.style.js
-	│   ├── Conference
+		│		│   │   ├── SignIn.js
+		│  	│   │   └── SignIn.style.js
+		│   ├── Conference
     │   │   ├── Conference.style.js
     │   │   ├── ConferenceContainer.js
     │   │   └── ConferencePresenter.js
-	│   ├── Planner
+		│   ├── Planner
     │   │   ├── Planner.style.js
     │   │   ├── PlannerContainer.js
     │   │   └── PlannerPresenter.js
