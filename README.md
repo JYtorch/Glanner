@@ -4,6 +4,14 @@
 
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/querydsl.github.io.svg)](https://butter-node-0ad.notion.site/Glanner-b16e6b30b2d64e76b05c75cfccc0862f)
 
+## Logo
+
+![logo](http://localhost:3000/static/media/glannerLogo1.3190f666fb1ee6ffc4c2.png)
+
+ 사각형으로 깔끔하게 캘린더를 표현
+
+편한 느낌을 주는 분홍색 컬러로 사용
+
 ## 개발 환경
 
 #### Front
@@ -43,3 +51,122 @@
 <img src="https://img.shields.io/badge/-SOLID-181717?style=flat-square"/>
 <img src="https://img.shields.io/badge/-Test%20Driven%20Design-181717?style=flat-square"/>
 <img src="https://img.shields.io/badge/-Agile-181717?style=flat-square"/>
+## 팀원
+
+#### Backend
+
+정주헌
+
+이정음
+
+안지애
+
+#### Frontend
+
+송민주
+
+안재영
+
+나지엽
+
+## 폴더 구조
+
+#### BE Directory
+
+```
+.
+└── main
+    ├── generated
+    ├── java
+    │   └── com
+    │       └── glanner
+    │           ├── api
+	│           │   ├── controller
+	│           │   ├── service
+	│           │   ├── queryrepository
+	│           │   ├── exception
+	│           │   │   └── handler
+	│           │   ├── dto
+	│           │   │   ├── request
+	│           │   │   └── response
+    │           ├── core
+	│           │   ├── domain
+	│           │   │   ├── user
+	│           │   │   ├── glanner
+	│           │   │   └── board
+	│           │   └── repository
+    │           ├── security
+	│           │   └── jwt
+    │           ├── aop
+	│           │   ├── aspect
+	│           │   ├── annotation
+	│           │   └── logtrace
+	│           └── config
+    └── resources
+
+```
+
+#### FE Directory
+
+```
+Glanner
+└── src
+    ├── App.js
+    ├── Modal
+    │	├── ModalContainer.js
+    │	├── ModalPresenter.js
+    │	└── Modal.style.js
+    │	
+    ├── Components 
+    │   ├── Common
+    │   │   ├── Footer.js
+    │   │   ├── App.js
+	│   │   ├── SideNavigationBar.js
+	│   │   ├── Router.js
+	│   │   └── globalStyle.js
+	│   ├── Member
+	│   │   ├── SignUp.js
+	│   │   └── SignIn.js
+	├── Routes
+    │   ├── Community
+    │   │   ├── Community.style.js
+    │   │   ├── CommunityContainer.js
+    │   │   └── CommunityPresenter.js
+    │   ├── Member
+    │   │   ├── SignUp
+	│	│   │   ├── SignUp.js
+	│  	│   │   └── SignUp.style.js
+    │   │   └── SignIn
+	│	│   │   ├── SignIn.js
+	│  	│   │   └── SignIn.style.js
+	│   ├── Conference
+    │   │   ├── Conference.style.js
+    │   │   ├── ConferenceContainer.js
+    │   │   └── ConferencePresenter.js
+	│   ├── Planner
+    │   │   ├── Planner.style.js
+    │   │   ├── PlannerContainer.js
+    │   │   └── PlannerPresenter.js
+    │   ├── Setting
+    │   │   ├── .style.js
+    │   │   ├── CurriculumContainer.js
+    │   │   └── CurriculumPresenter.js
+    │   └── Review
+    │       ├── Review.style.js
+    │       ├── ReviewContainer.js
+    │       └── ReviewPresenter.js
+    ├── api
+    │   └── api.js
+    ├── assets  // 이미지 파일 등 관리
+    ├── data
+    │   └── classInformation.json
+    ├── index.js
+    ├── react-app-env.d.js
+    └── store
+        └── reducers
+            ├── ClassInformation.js
+            └── index.js
+```
+
+프로젝트 실행방법
+
