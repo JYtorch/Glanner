@@ -2,15 +2,16 @@ spring:
   profiles:
     active: local
   datasource:
-    url: jdbc:mariadb://i6a606.p.ssafy.io:3306/glanner
-    username: root
-    password: root
-    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:postgres://godwovmavommpx:c4428c01490729ae09117b540bc7d99e1ec0cd65e1680a55976d398f1525e3d6@ec2-34-199-68-114.compute-1.amazonaws.com:5432/d10scn9bioq03d
+    username: godwovmavommpx
+    password: c4428c01490729ae09117b540bc7d99e1ec0cd65e1680a55976d398f1525e3d6
+    port: 5432
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -50,3 +51,7 @@ jwt:
       path: auth
       refresh: refresh
 
+sms:
+  serviceid: ncp:sms:kr:279856777501:glanner
+  accesskey: vqCrek0X5afBgKemOtdP
+  secretkey: oJBNw9bRz0aSQ1ZAERXwRckGVF3McVHQc9q79ICE
