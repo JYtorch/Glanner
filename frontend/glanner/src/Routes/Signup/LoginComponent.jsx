@@ -47,7 +47,7 @@ const LoginComponent = ({setSignupPage, signupPage}) => {
         <Grid item xs={12} sm={12} md={4} component={Paper} elevation={6} square backgroundColor="#F6F6F6" sx={{height: "100%"}}>
           <Box
             sx={{
-              mt: '50%',
+              marginTop: '70%',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
